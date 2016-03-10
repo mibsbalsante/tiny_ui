@@ -1,31 +1,35 @@
 @mixin grid($class, $grid-value, $property) {
-  @media (min-width: 1024px) {
+  @media (min-width: 992px) {
     @for $i from 1 through $grid-columns {
-      .row > .#{$class}-#{$i} {
-        #{$property}: percentage($i/$grid-value);
+      $percent: percentage($i/$grid-value);
+      @if ($percent>100%) {
+        $percent: 100%;
+      }
+      .#{$class}-#{$i} {
+        #{$property}: $percent;
       }
     }
   }
+}
 
-  @media (min-width: 768px) and (max-width: 1023px) {
+@mixin grid-small($class, $grid-value, $property) {
+  @media (min-width: 768px) and (max-width: 991px) {
     @for $i from 1 through $grid-columns {
-      .row > .#{$class}-#{$i} {
-        #{$property}: percentage($i/($grid-value/2));
+      $percent: percentage($i/($grid-value/2));
+      @if ($percent>100%) {
+        $percent: 100%;
+      }
+      .#{$class}-#{$i} {
+        #{$property}: $percent;
       }
     }
   }
+}
 
-  @media (min-width: 600px) and (max-width: 767px) {
+@mixin grid-mini($class, $grid-value, $property) {
+  @media (max-width: 767px) {
     @for $i from 1 through $grid-columns {
-      .row > .#{$class}-#{$i} {
-        #{$property}: percentage($i/($grid-value/4));
-      }
-    }
-  }
-
-  @media (max-width: 599px) {
-    @for $i from 1 through $grid-columns {
-      .row > .#{$class}-#{$i} {
+      .#{$class}-#{$i} {
         #{$property}: 100%;
       }
     }
@@ -45,17 +49,26 @@ $column-left-margin: to-right;
   & {
     margin: 1em 0 0;
     position: relative;
-    display: flex;
   }
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
   &:first-child {
     margin-top: 0;
   }
 
   & > [class*="#{$column}-"] {
-    // float: left;
+    float: left;
     padding: 1em;
   }
 }
+.row > {
+  @include grid($column, $grid-columns, width);
+  @include grid-small($column, $grid-columns, width);
+  @include grid-mini($column, $grid-columns, width);
 
-@include grid($column, $grid-columns, width);
-@include grid($column-left-margin, $grid-columns, margin-left);
+  @include grid($column-left-margin, $grid-columns - 1, margin-left);
+}

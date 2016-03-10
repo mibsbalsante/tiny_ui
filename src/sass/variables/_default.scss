@@ -1,26 +1,11 @@
 @font-face {
-  font-family: 'Open Sans';
-  src: url('../fonts/open_sans/OpenSans-Regular.ttf');
-}
-
-@font-face {
   font-family: 'Roboto';
-  src: url('../fonts/roboto/Roboto-Regular.ttf');
+  src: url(../fonts/roboto/Roboto-Regular.ttf);
 }
 
 @font-face {
   font-family: 'Roboto Medium';
-  src: url('../fonts/roboto/Roboto-Medium.ttf');
-}
-
-@font-face {
-  font-family: 'MonaKo';
-  src: url('../fonts/MonaKo.ttf');
-}
-
-@font-face {
-  font-family: 'Minimal';
-  src: url('../fonts/minimal/Minimal.ttf');
+  src: url(../fonts/roboto/Roboto-Medium.ttf);
 }
 
 *,
@@ -32,7 +17,7 @@
 }
 
 body {
-  font-family: 'Roboto';
+  font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 h1,
 h2,
@@ -48,7 +33,7 @@ h6,
 .h6,
 .header,
 .title {
-  font-family: 'Roboto Medium';
+  font-family: 'Roboto Medium', 'Helvetica', sans-serif;
   margin: 0;
   padding: .2rem;
   font-weight: 400;
@@ -72,8 +57,6 @@ h5 {
 h6 {
   font-size: 1rem;
 }
-
-
 
 
 .bold {
@@ -134,7 +117,6 @@ h6 {
 
 .fluid {
   width: 100%;
-  display: flex;
 }
 
 .margin {
