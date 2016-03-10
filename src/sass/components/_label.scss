@@ -1,0 +1,12 @@
+label,
+.label {
+  padding: .2em .6em;
+  font-size: .8rem;
+
+  &.large {
+    font-size: 1rem;
+  }
+  &.huge {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,151 @@
+@mixin hover($class, $color: $lighter) {
+  &.#{$class}:hover {
+    color: darken($color, 10%);
+  }
+
+  &.bg-#{$class} {
+    &:hover {
+      background: $color;
+
+      @if($color == $dark or $color == $black) {
+        color: $white;
+      }
+      @else if ($color == $grey) {
+        color: $dark;
+      }
+    }
+
+    &.inverted {
+      &:hover {
+        @if($color == $dark or $color == $black) {
+          background: $white;
+          color: $color;
+          border-color: $color;
+        }
+        @else {
+          background: $color;
+        }
+      }
+    }
+
+    &.simple {
+      &:hover {
+        @if($color == $dark or $color == $black) {
+          color: $white;
+          border-color: $white;
+        }
+        @else {
+          color: lighten($color, 5%);
+          border-color: lighten($color, 5%);
+        }
+      }
+    }
+  }
+
+  &.#{$class}.simple {
+    &:hover {
+      border-color: darken($color, 10%);
+    }
+  }
+
+  &.#{$class}.inverted {
+    &:hover {
+      border-color: $color;
+    }
+
+    &.simple {
+      &:hover {
+        @if ($color == $dark or $color == $black) {
+          color: $lighter;
+        }
+        @else {
+          color: $color;
+        }
+      }
+    }
+  }
+}
+
+
+button,
+.button {
+  padding: .6em 1em;
+  margin: .2em;
+  border-radius: 0;
+  border: 1px solid transparent;
+  cursor: pointer;
+  color: $darker;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 700;
+
+  &:hover {
+    color: $darker;
+  }
+
+  &[class*="bg-"]:hover {
+    color: $white;
+  }
+
+  &[class*="bg-"].inverted.simple {
+    &:hover {
+      background: $dark;
+    }
+  }
+
+  &.tiny {
+    padding: .2em .6em;
+  }
+  &.small {
+    padding: .4em .8em;
+  }
+  &.large {
+    padding: .8em 1.2em;
+    font-size: 1.2rem;
+  }
+  &.huge {
+    padding: 1em 1.4em;
+    font-size: 1.4rem;
+  }
+
+
+  // default
+  @include hover('default', $default);
+  // primary
+  @include hover('primary', $primary);
+  // secondary
+  @include hover('secondary', $secondary);
+  // success
+  @include hover('success', $success);
+  // info
+  @include hover('info', $info);
+  // danger
+  @include hover('danger', $danger);
+  // warning
+  @include hover('warning', $warning);
+  // black
+  @include hover('black', $black);
+  // blue
+  @include hover('blue', $blue);
+  // dark-blue
+  @include hover('dark-blue', $darkblue);
+  // green
+  @include hover('green', $green);
+  // grey
+  @include hover('grey', $grey);
+  // light-blue
+  @include hover('light-blue', $lightblue);
+  // purple
+  @include hover('purple', $purple);
+  // red
+  @include hover('red', $red);
+  // teal
+  @include hover('teal', $teal);
+  // yellow
+  @include hover('yellow', $yellow);
+
+  &.simple {
+    color: $darkgrey;
+    border-color: $darkgrey;
+  }
+}

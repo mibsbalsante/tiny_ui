@@ -1,0 +1,143 @@
+/* mixins */
+@mixin bg($class, $color: $lighter) {
+  .bg-#{$class} {
+    background: lighten($color, 5%);
+    border-color: $color;
+
+    @if($color == $grey) {
+      color: $darkgrey;
+    }
+
+    &.inverted {
+
+      @if ($color == $dark or $color == $black) {
+        color: transparentize($lighter, .12);;
+        border-color: transparentize($lighter, .12);;
+      }
+      @else {
+        color: lighten($color, 5%);
+        border-color: lighten($color, 5%);
+      }
+    }
+
+    &.gradient {
+      background: linear-gradient(lighten($color, 10%) 25%, $color 75%);
+    }
+
+    &.modern {
+      box-shadow: 0px 4px 0 -2px $color;
+    }
+  }
+}
+
+@mixin color($color: $lighter) {
+
+}
+
+// colors
+$white: #FFF;
+$black: #323232;
+$blue: #1B80CB;
+$darkblue: #23485F;
+$green: #2FAD5D;
+$grey: #ADADAD;
+$lightblue: #4EB3FE;
+$purple: #613EA4;
+$red: #E43939;
+$teal: #008080;
+$yellow: #FFA500;
+
+
+// default colors
+$lighter: #FEFEFE;
+$light: #CCC;
+$darkgrey: #444;
+$dark: #333;
+$darker: #262626;
+
+$default: $grey;
+$primary: $black;
+$secondary: $teal;
+$success: $green;
+$info: $lightblue;
+$danger: $red;
+$warning: $yellow;
+
+
+// code
+
+[class*="bg-"] {
+  color: transparentize($lighter, .12);
+
+  &.simple {
+    color:  lighten($lighter, 5%);
+    border-color:  lighten($lighter, 5%);
+  }
+
+  &.inverted {
+    background: $dark;
+
+    &.simple {
+      color: transparentize($lighter, .12);
+      border-color: transparentize($lighter, .12);
+    }
+
+    &.gradient {
+      background: linear-gradient(lighten($dark, 10%) 25%, $dark 75%);
+    }
+  }
+}
+
+// color classes
+
+// default
+  @include bg('default', $default);
+  @include color($default);
+// primary
+  @include bg('primary', $primary);
+  @include color($primary);
+// secondary
+  @include bg('secondary', $secondary);
+  @include color($secondary);
+// success
+  @include bg('success', $success);
+  @include color($success);
+// info
+  @include bg('info', $info);
+  @include color($info);
+// danger
+  @include bg('danger', $danger);
+  @include color($danger);
+// warning
+  @include bg('warning', $warning);
+  @include color($warning);
+// black
+  @include bg('black', $black);
+  @include color($black);
+// blue
+  @include bg('blue', $blue);
+  @include color($blue);
+// dark-blue
+  @include bg('dark-blue', $darkblue);
+  @include color($darkblue);
+// green
+  @include bg('green', $green);
+  @include color($green);
+// grey
+  @include bg('grey', $grey);
+  @include color($grey);
+// light-blue
+  @include bg('light-blue', $lightblue);
+  @include color($lightblue);
+// purple
+  @include bg('purple', $purple);
+  @include color($purple);
+// red
+  @include bg('red', $red);
+  @include color($red);
+// teal
+  @include bg('teal', $teal);
+  @include color($teal);
+// yellow
+  @include bg('yellow', $yellow);
+  @include color($yellow);

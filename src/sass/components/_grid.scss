@@ -1,0 +1,61 @@
+@mixin grid($class, $grid-value, $property) {
+  @media (min-width: 1024px) {
+    @for $i from 1 through $grid-columns {
+      .row > .#{$class}-#{$i} {
+        #{$property}: percentage($i/$grid-value);
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @for $i from 1 through $grid-columns {
+      .row > .#{$class}-#{$i} {
+        #{$property}: percentage($i/($grid-value/2));
+      }
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 767px) {
+    @for $i from 1 through $grid-columns {
+      .row > .#{$class}-#{$i} {
+        #{$property}: percentage($i/($grid-value/4));
+      }
+    }
+  }
+
+  @media (max-width: 599px) {
+    @for $i from 1 through $grid-columns {
+      .row > .#{$class}-#{$i} {
+        #{$property}: 100%;
+      }
+    }
+  }
+}
+
+// grid variables
+$column: col;
+$grid-columns: 12;
+$column-left-margin: to-right;
+
+.grid {
+  top: 0;
+}
+
+.row {
+  & {
+    margin: 1em 0 0;
+    position: relative;
+    display: flex;
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+
+  & > [class*="#{$column}-"] {
+    // float: left;
+    padding: 1em;
+  }
+}
+
+@include grid($column, $grid-columns, width);
+@include grid($column-left-margin, $grid-columns, margin-left);

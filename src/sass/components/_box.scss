@@ -1,0 +1,146 @@
+@mixin bg($color) {
+  &.box,
+  &.box.human,
+  &.boxes > .box:first-child {
+      border-top-color: $color;
+  }
+  &-bg.modern {
+    &.box,
+    &.boxes {
+      box-shadow: 0 8px 0 -4px lighten($color, 10%);
+    }
+  }
+  &.modern {
+    &.box,
+    &.boxes {
+      border-color: $color;
+      box-shadow: 0 8px 0 -4px $color;
+    }
+  }
+}
+@mixin simple-box($color) {
+  &.box,
+  &.boxes {
+    & > .box {
+      border-top-color: $color;
+    }
+  }
+}
+
+.box {
+  padding: 1em;
+
+  &.human {
+    padding: 0;
+    border-top: 5px solid darken($lighter, 10%);
+
+    & > .head {
+      border-bottom: 1px solid darken($lighter, 10%);
+      font-size: 1.2em;
+    }
+    & > .foot {
+      border-top: 1px solid darken($lighter, 10%);
+    }
+    & > .head,
+    & > .body,
+    & > .foot {
+      padding: 1em;
+    }
+  }
+}
+
+.box,
+.boxes {
+  margin: 1em 0;
+  border: 1px solid darken($lighter, 10%);
+  box-shadow: 0 2px 2px 0 transparentize($dark, .8);
+
+  &[class*="-bg"],
+  &[class*="-bg"] > .box {
+    border: 0 none;
+  }
+
+  &.beauty {
+    border-radius: 3px;
+  }
+  &.modern {
+    box-shadow: 0 8px 0 -4px darken($lighter, 10%);
+  }
+}
+
+.boxes {
+  & > .box {
+    margin: 0;
+    box-shadow: unset;
+    border-width: 1px 0 0 0;
+  }
+}
+
+.default{
+  @include bg($default);
+  @include simple-box($default);
+}
+.primary{
+  @include bg($primary);
+  @include simple-box($primary);
+}
+.secondary{
+  @include bg($secondary);
+  @include simple-box($secondary);
+}
+.success{
+  @include bg($success);
+  @include simple-box($success);
+}
+.info{
+  @include bg($info);
+  @include simple-box($info);
+}
+.danger{
+  @include bg($danger);
+  @include simple-box($danger);
+}
+.warning{
+  @include bg($warning);
+  @include simple-box($warning);
+}
+.black{
+  @include bg($black);
+  @include simple-box($black);
+}
+.blue{
+  @include bg($blue);
+  @include simple-box($blue);
+}
+.dark-blue{
+  @include bg($darkblue);
+  @include simple-box($darkblue);
+}
+.green{
+  @include bg($green);
+  @include simple-box($green);
+}
+.grey{
+  @include bg($grey);
+  @include simple-box($grey);
+}
+.light-blue{
+  @include bg($lightblue);
+  @include simple-box($lightblue);
+}
+.purple{
+  @include bg($purple);
+  @include simple-box($purple);
+}
+.red{
+  @include bg($red);
+  @include simple-box($red);
+}
+.teal{
+  @include bg($teal);
+  @include simple-box($teal);
+}
+.yellow{
+  @include bg($yellow);
+  @include simple-box($yellow);
+}
