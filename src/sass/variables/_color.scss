@@ -4,13 +4,12 @@
     background: lighten($color, 5%);
     border-color: $color;
 
-    @if($color == $grey) {
+    @if (lightness($color) > 70%) {
       color: $darkgrey;
     }
 
     &.inverted {
-
-      @if ($color == $dark or $color == $black) {
+      @if (lightness($color) < 20%) {
         color: transparentize($lighter, .12);;
         border-color: transparentize($lighter, .12);;
       }
@@ -20,8 +19,8 @@
       }
     }
 
-    &.gradient {
-      background: linear-gradient(lighten($color, 10%) 25%, $color 75%);
+    &.classic {
+      box-shadow: 0px -5px 10px 0px darken($color, 5%) inset, 0px 0px 2px 0px darken($color, 5%) inset, 0px 0px 1px 0px darken($color, 5%);
     }
 
     &.modern {
@@ -31,10 +30,10 @@
 }
 
 @mixin color($color: $lighter) {
-
 }
 
-// colors
+
+// color variables - individual use
 $white: #FFF;
 $black: #323232;
 $blue: #1B80CB;
@@ -46,7 +45,6 @@ $purple: #613EA4;
 $red: #E43939;
 $teal: #008080;
 $yellow: #FFA500;
-
 
 // default colors
 $lighter: #FEFEFE;
@@ -63,10 +61,38 @@ $info: $lightblue;
 $danger: $red;
 $warning: $yellow;
 
+// color map
+$colors: (
+  white: $white,
+  black: $black,
+  blue: $blue,
+  dark-blue: $darkblue,
+  green: $green,
+  grey: $grey,
+  light-blue: $lightblue,
+  purple: $purple,
+  red: $red,
+  teal: $teal,
+  yellow: $yellow,
 
-// code
+  lighter: $lighter,
+  light: $light,
+  dark-grey: $darkgrey,
+  dark: $dark,
+  darker: $darker,
 
-[class*="bg-"] {
+  default: $default,
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  danger: $danger,
+  warning: $warning
+);
+
+
+// bg definition
+[class^="bg-"] {
   color: transparentize($lighter, .12);
 
   &.simple {
@@ -82,62 +108,15 @@ $warning: $yellow;
       border-color: transparentize($lighter, .12);
     }
 
-    &.gradient {
-      background: linear-gradient(lighten($dark, 10%) 25%, $dark 75%);
+    &.classic {
+      box-shadow: 0px -5px 10px 0px $darker inset, 0px 0px 2px 0px $darker inset;
     }
   }
 }
 
-// color classes
 
-// default
-  @include bg('default', $default);
-  @include color($default);
-// primary
-  @include bg('primary', $primary);
-  @include color($primary);
-// secondary
-  @include bg('secondary', $secondary);
-  @include color($secondary);
-// success
-  @include bg('success', $success);
-  @include color($success);
-// info
-  @include bg('info', $info);
-  @include color($info);
-// danger
-  @include bg('danger', $danger);
-  @include color($danger);
-// warning
-  @include bg('warning', $warning);
-  @include color($warning);
-// black
-  @include bg('black', $black);
-  @include color($black);
-// blue
-  @include bg('blue', $blue);
-  @include color($blue);
-// dark-blue
-  @include bg('dark-blue', $darkblue);
-  @include color($darkblue);
-// green
-  @include bg('green', $green);
-  @include color($green);
-// grey
-  @include bg('grey', $grey);
-  @include color($grey);
-// light-blue
-  @include bg('light-blue', $lightblue);
-  @include color($lightblue);
-// purple
-  @include bg('purple', $purple);
-  @include color($purple);
-// red
-  @include bg('red', $red);
-  @include color($red);
-// teal
-  @include bg('teal', $teal);
-  @include color($teal);
-// yellow
-  @include bg('yellow', $yellow);
-  @include color($yellow);
+// code
+// todo: color()
+@each $name, $color in $colors {
+  @include bg('#{$name}', $color);
+}

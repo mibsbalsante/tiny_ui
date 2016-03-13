@@ -60,7 +60,7 @@ $column-left-margin: to-right;
     margin-top: 0;
   }
 
-  & > [class*="#{$column}-"] {
+  & > [class^="#{$column}-"] {
     float: left;
     padding: 1em;
   }

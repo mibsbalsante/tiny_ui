@@ -4,37 +4,8 @@
   }
 }
 
-// default
-@include text('default', $default);
-// primary
-@include text('primary', $primary);
-// secondary
-@include text('secondary', $secondary);
-// success
-@include text('success', $success);
-// info
-@include text('info', $info);
-// danger
-@include text('danger', $danger);
-// warning
-@include text('warning', $warning);
-// black
-@include text('black', $black);
-// blue
-@include text('blue', $blue);
-// dark-blue
-@include text('dark-blue', $darkblue);
-// green
-@include text('green', $green);
-// grey
-@include text('grey', $grey);
-// light-blue
-@include text('light-blue', $lightblue);
-// purple
-@include text('purple', $purple);
-// red
-@include text('red', $red);
-// teal
-@include text('teal', $teal);
-// yellow
-@include text('yellow', $yellow);
+
+// code
+@each $name, $color in $colors {
+  @include text(#{$name}, $color);
+}
