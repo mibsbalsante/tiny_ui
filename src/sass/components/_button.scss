@@ -7,30 +7,27 @@
     &:hover {
       background: $color;
 
-      @if($color == $dark or $color == $black) {
+      @if (lightness($color) < 20%) {
         color: $white;
       }
-      @else if ($color == $grey) {
+      @else if (lightness($color) > 70%) {
         color: $dark;
       }
     }
 
     &.inverted {
       &:hover {
-        @if($color == $dark or $color == $black) {
+        @if (lightness($color) < 20%) {
           background: $white;
           color: $color;
           border-color: $color;
-        }
-        @else {
-          background: $color;
         }
       }
     }
 
     &.simple {
       &:hover {
-        @if($color == $dark or $color == $black) {
+        @if (lightness($color) < 20%) {
           color: $white;
           border-color: $white;
         }
@@ -55,7 +52,7 @@
 
     &.simple {
       &:hover {
-        @if ($color == $dark or $color == $black) {
+        @if (lightness($color) < 20%) {
           color: $lighter;
         }
         @else {
@@ -67,6 +64,7 @@
 }
 
 
+// button definition
 button,
 .button {
   padding: .6em 1em;
@@ -74,20 +72,25 @@ button,
   border-radius: 0;
   border: 1px solid transparent;
   cursor: pointer;
-  color: $darker;
+  color: $darkgrey;
   background-color: transparent;
   font-size: 1rem;
   font-weight: 700;
+  transition: all .2s ease-out;
 
   &:hover {
     color: $darker;
   }
 
-  &[class*="bg-"]:hover {
+  &[class^="bg-"]:hover {
     color: $white;
+
+    &.classic {
+      box-shadow: 0px 0px 1px 0px transparentize($darker, .5);
+    }
   }
 
-  &[class*="bg-"].inverted.simple {
+  &[class^="bg-"].inverted.simple {
     &:hover {
       background: $dark;
     }
@@ -108,44 +111,68 @@ button,
     font-size: 1.4rem;
   }
 
-
-  // default
-  @include hover('default', $default);
-  // primary
-  @include hover('primary', $primary);
-  // secondary
-  @include hover('secondary', $secondary);
-  // success
-  @include hover('success', $success);
-  // info
-  @include hover('info', $info);
-  // danger
-  @include hover('danger', $danger);
-  // warning
-  @include hover('warning', $warning);
-  // black
-  @include hover('black', $black);
-  // blue
-  @include hover('blue', $blue);
-  // dark-blue
-  @include hover('dark-blue', $darkblue);
-  // green
-  @include hover('green', $green);
-  // grey
-  @include hover('grey', $grey);
-  // light-blue
-  @include hover('light-blue', $lightblue);
-  // purple
-  @include hover('purple', $purple);
-  // red
-  @include hover('red', $red);
-  // teal
-  @include hover('teal', $teal);
-  // yellow
-  @include hover('yellow', $yellow);
+  // code
+  @each $name, $color in $colors {
+    @include hover('#{$name}', $color);
+  }
 
   &.simple {
     color: $darkgrey;
     border-color: $darkgrey;
+  }
+}
+
+.buttons {
+  & {
+    margin: .2em;
+    display: inline-flex;
+
+    &[class^="bg-"] {
+      color: $lighter;
+    }
+  }
+
+  &.vertical {
+    display: block;
+    &.fluid {
+      & > button,
+      & > .button {
+        width: 100%;
+      }
+    }
+  }
+
+  button,
+  .button {
+    margin: 0;
+    color: transparentize($lighter, .12);
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &.beauty {
+    & > button,
+    & > .button {
+      &:first-child {
+        border-radius: .4em 0 0 .4em;
+      }
+      &:last-child {
+        border-radius: 0 .4em .4em 0;
+      }
+    }
+
+    &.vertical {
+      & > button,
+      & > .button {
+        &:first-child {
+          border-radius: .4em .4em 0 0;
+        }
+        &:last-child {
+          border-radius: 0 0 .4em .4em;
+        }
+      }
+    }
   }
 }

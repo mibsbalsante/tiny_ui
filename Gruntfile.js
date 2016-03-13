@@ -21,6 +21,14 @@ module.exports = function(grunt) {
 			},
 		},
 
+		cssbeautifier : {
+		  files : ["dist/css/tiny.css"],
+			options : {
+		    indent: ' ',
+		    openbrace: 'end-of-line'
+		  }
+		},
+
 		cssmin: {
 			target: {
 				files: {
@@ -32,7 +40,7 @@ module.exports = function(grunt) {
 		watch: {
 			scripts: {
 				files: ['src/js/*','src/css/*', 'src/sass/*', 'src/sass/components/*', 'src/sass/variables/*', 'src/sass/structure/*'],
-				tasks: ['sass','autoprefixer','cssmin']
+				tasks: ['sass','autoprefixer','cssmin', 'cssbeautifier']
 			},
 		},
 	});
@@ -41,6 +49,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-cssbeautifier');
 
-	grunt.registerTask('default', ['watch','sass','autoprefixer','cssmin']);
+	grunt.registerTask('default', ['watch','sass','autoprefixer', 'cssbeautifier', 'cssmin']);
 };
