@@ -82,7 +82,7 @@ button,
     color: $darker;
   }
 
-  &[class^="bg-"]:hover {
+  &[class*="bg-"]:hover {
     color: $white;
 
     &.classic {
@@ -90,7 +90,7 @@ button,
     }
   }
 
-  &[class^="bg-"].inverted.simple {
+  &[class*="bg-"].inverted.simple {
     &:hover {
       background: $dark;
     }
@@ -127,7 +127,7 @@ button,
     margin: .2em;
     display: inline-flex;
 
-    &[class^="bg-"] {
+    &[class*="bg-"] {
       color: $lighter;
     }
   }

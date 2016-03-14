@@ -92,7 +92,7 @@ $colors: (
 
 
 // bg definition
-[class^="bg-"] {
+[class*="bg-"] {
   color: transparentize($lighter, .12);
 
   &.simple {

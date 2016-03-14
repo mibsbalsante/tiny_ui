@@ -1,0 +1,35 @@
+.nav {
+  &-top {
+    width: 100%;
+    top: 0;
+    min-height: 3.571em;
+  }
+  &-left {
+    height: 100%;
+    top: 0;
+    min-width: 3.571em;
+  }
+  &-down {
+    width: 100%;
+    bottom: 0;
+    min-height: 3.571em;
+  }
+  &-right {
+    height: 100%;
+    top: 0;
+    right: 0;
+    min-width: 3.571em;
+  }
+}
+
+[class*="nav-"] {
+  z-index: 99999;
+  position: fixed;
+
+  &.row,
+  .row {
+    [class*="col-"] {
+      padding: .5rem;
+    }
+  }
+}
