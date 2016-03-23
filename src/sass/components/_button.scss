@@ -72,17 +72,19 @@ button,
   border-radius: 0;
   border: 1px solid transparent;
   cursor: pointer;
-  color: $darkgrey;
+  color: inherit;
   background-color: transparent;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
+  font-family: inherit;
+  display: inline-flex;
   transition: all .2s ease-out;
 
   &:hover {
     color: $darker;
   }
 
-  &[class^="bg-"]:hover {
+  &[class*="bg-"]:hover {
     color: $white;
 
     &.classic {
@@ -90,7 +92,7 @@ button,
     }
   }
 
-  &[class^="bg-"].inverted.simple {
+  &[class*="bg-"].inverted.simple {
     &:hover {
       background: $dark;
     }
@@ -127,7 +129,7 @@ button,
     margin: .2em;
     display: inline-flex;
 
-    &[class^="bg-"] {
+    &[class*="bg-"] {
       color: $lighter;
     }
   }

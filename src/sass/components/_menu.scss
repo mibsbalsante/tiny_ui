@@ -1,0 +1,48 @@
+.menu {
+  padding: .5em;
+
+  li,
+  .item {
+    display: inherit;
+    padding: .4em 1em;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease-out;
+
+    &:not(.right):not(.no) {
+      background: rgba(0,0,0,0.1);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .right {
+    margin: 0 0 0 auto;
+    padding: 0;
+  }
+
+  .menu {
+    padding: 0;
+  }
+}
+
+[class*="-top"],
+[class*="-bottom"] {
+  .menu {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.vertical.menu,
+[class*="-left"] > .menu,
+[class*="-right"] > .menu {
+  li:not(.right),
+  .item:not(.right) {
+    padding: 1em .4em;
+  }
+}

@@ -1,0 +1,24 @@
+// grid variables
+$column: col;
+$grid-columns: 12;
+$column-left-margin: to-right;
+$container: 5;
+
+$mobile-min: 320px;
+$tablet-min: 768px;
+$pc-min: 992px;
+$large-pc-min: 1200px;
+
+$responsive-grid: (
+  large: $large-pc-min,
+  default: $pc-min,
+  small: $tablet-min,
+  tiny: $mobile-min
+);
+
+$responsive-griddd: (
+  tiny: $mobile-min,
+  small: $tablet-min,
+  default: $pc-min,
+  large: $large-pc-min
+)

@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			scripts: {
-				files: ['src/js/*','src/css/*', 'src/sass/*', 'src/sass/components/*', 'src/sass/variables/*', 'src/sass/structure/*'],
+				files: ['src/js/*','src/css/*', 'src/sass/*', 'src/sass/components/*', 'src/sass/variables/*', 'src/sass/classes/*'],
 				tasks: ['sass','autoprefixer','cssmin', 'cssbeautifier']
 			},
 		},

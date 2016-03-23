@@ -10,6 +10,8 @@
 
 body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
+  color: $darkgrey;
+  font-size: 14px;
 }
 h1,
 h2,
@@ -27,9 +29,27 @@ h6,
 .title {
   font-family: 'Roboto', 'Helvetica', sans-serif;
   margin: 0;
-  padding: .2rem;
+  padding: .2rem 0;
   font-weight: 500;
   line-height: 1;
+  display: flex;
+  color: $dark;
+}
+[class*="bg-"] {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    color: $lighter;
+  }
 }
 h1 {
   font-size: 3.5rem;
@@ -50,6 +70,10 @@ h6 {
   font-size: 1rem;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 .bold {
   font-weight: 700;
@@ -91,6 +115,7 @@ h6 {
 
   &-right {
     margin-left: auto;
+    margin-right: 0;
   }
 }
 

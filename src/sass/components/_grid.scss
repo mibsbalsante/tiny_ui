@@ -1,54 +1,60 @@
-@mixin grid($class, $grid-value, $property) {
-  @media (min-width: 992px) {
-    @for $i from 1 through $grid-columns {
-      $percent: percentage($i/$grid-value);
-      @if ($percent>100%) {
-        $percent: 100%;
+@mixin grid($class, $property, $all) {
+
+  @each $device-min, $width-min in $responsive-grid {
+    @each $device, $width in $responsive-grid {
+      @if ($width > $mobile-min) and ($width-min < $large-pc-min) {
+        @media (min-width: $width-min) and (max-width: #{$width - 1}) {
+
+        }
       }
+    }
+  }
+
+  @for $i from 1 through $grid-columns {
+    $percent: percentage($i/$grid-columns);
+    .#{$class}-#{$i} {
+      #{$property}: $percent;
+    }
+  }
+  @media (min-width: #{$tablet-min}) and (max-width: #{$pc-min - 1}) {
+    @for $i from 1 through $grid-columns {
+      $percent: percentage($i/($grid-columns/2));
+      @if ($i<$grid-columns/2) {
+        .#{$class}-#{$i} {
+          #{$property}: $percent;
+        }
+      }
+    }
+  }
+  @media (max-width: #{$tablet-min - 1}) {
+    @for $i from 1 through $grid-columns {
       .#{$class}-#{$i} {
-        #{$property}: $percent;
+        @if ($all) {
+          #{$property}: 100%;
+        }
+        @else {
+          #{$property}: 0;
+        }
       }
     }
   }
 }
-
-@mixin grid-small($class, $grid-value, $property) {
-  @media (min-width: 768px) and (max-width: 991px) {
-    @for $i from 1 through $grid-columns {
-      $percent: percentage($i/($grid-value/2));
-      @if ($percent>100%) {
-        $percent: 100%;
-      }
-      .#{$class}-#{$i} {
-        #{$property}: $percent;
-      }
-    }
-  }
-}
-
-@mixin grid-mini($class, $grid-value, $property) {
-  @media (max-width: 767px) {
-    @for $i from 1 through $grid-columns {
-      .#{$class}-#{$i} {
-        #{$property}: 100%;
-      }
-    }
-  }
-}
-
-// grid variables
-$column: col;
-$grid-columns: 12;
-$column-left-margin: to-right;
 
 .grid {
   top: 0;
+  padding: 1em 0;
+
+  & > .row > [class*="#{$column}-"] {
+    padding: 0 1em;
+  }
 }
 
 .row {
   & {
-    margin: 1em 0 0;
+    margin: 0 0 1em;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
   }
   &:after {
     content: '';
@@ -56,19 +62,11 @@ $column-left-margin: to-right;
     clear: both;
   }
 
-  &:first-child {
-    margin-top: 0;
-  }
-
-  & > [class^="#{$column}-"] {
-    float: left;
-    padding: 1em;
+  & > [class*="#{$column}-"] {
   }
 }
 .row > {
-  @include grid($column, $grid-columns, width);
-  @include grid-small($column, $grid-columns, width);
-  @include grid-mini($column, $grid-columns, width);
+  @include grid($column, width, true);
 
-  @include grid($column-left-margin, $grid-columns - 1, margin-left);
+  @include grid($column-left-margin, margin-left, false);
 }

@@ -1,38 +1,3 @@
-/* mixins */
-@mixin bg($class, $color: $lighter) {
-  .bg-#{$class} {
-    background: lighten($color, 5%);
-    border-color: $color;
-
-    @if (lightness($color) > 70%) {
-      color: $darkgrey;
-    }
-
-    &.inverted {
-      @if (lightness($color) < 20%) {
-        color: transparentize($lighter, .12);;
-        border-color: transparentize($lighter, .12);;
-      }
-      @else {
-        color: lighten($color, 5%);
-        border-color: lighten($color, 5%);
-      }
-    }
-
-    &.classic {
-      box-shadow: 0px -5px 10px 0px darken($color, 5%) inset, 0px 0px 2px 0px darken($color, 5%) inset, 0px 0px 1px 0px darken($color, 5%);
-    }
-
-    &.modern {
-      box-shadow: 0px 4px 0 -2px $color;
-    }
-  }
-}
-
-@mixin color($color: $lighter) {
-}
-
-
 // color variables - individual use
 $white: #FFF;
 $black: #323232;
@@ -89,34 +54,3 @@ $colors: (
   danger: $danger,
   warning: $warning
 );
-
-
-// bg definition
-[class^="bg-"] {
-  color: transparentize($lighter, .12);
-
-  &.simple {
-    color:  lighten($lighter, 5%);
-    border-color:  lighten($lighter, 5%);
-  }
-
-  &.inverted {
-    background: $dark;
-
-    &.simple {
-      color: transparentize($lighter, .12);
-      border-color: transparentize($lighter, .12);
-    }
-
-    &.classic {
-      box-shadow: 0px -5px 10px 0px $darker inset, 0px 0px 2px 0px $darker inset;
-    }
-  }
-}
-
-
-// code
-// todo: color()
-@each $name, $color in $colors {
-  @include bg('#{$name}', $color);
-}
