@@ -53,22 +53,41 @@
   }
 }
 
+.box {
+  border-width: 2px 1px 1px;
+  border-style: solid;
+  border-color: darken($lighter, 10%);
+}
+
 .box,
 .boxes {
-  margin: 1em 0;
-  border: 1px solid darken($lighter, 10%);
+  color: $dark;
+  background: $lighter;
+  margin: .4em 0;
   box-shadow: 0 2px 2px 0 transparentize($dark, .8);
 
   &[class*="bg-"],
   &[class*="bg-"] > .box {
     border: 0 none;
+    color: $lighter;
+
+    .title {
+      color: $lighter;
+    }
   }
 
   &.beauty {
-    border-radius: 3px;
+    border-radius: .4em;
   }
+
   &.modern {
     box-shadow: 0 8px 0 -4px darken($lighter, 10%);
+  }
+
+  .row,
+  [class*="col-"] {
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -76,7 +95,21 @@
   & > .box {
     margin: 0;
     box-shadow: unset;
-    border-width: 1px 0 0 0;
+    border-width: 1px 1px 0;
+    background: inherit;
+
+    &:first-child {
+      border-width: 2px 1px 0;
+    }
+  }
+
+  &.beauty {
+    & > .box:first-child {
+      border-radius: .4em .4em 0 0;
+    }
+    & > .box:last-child {
+      border-radius: 0 0 .4em .4em;
+    }
   }
 }
 

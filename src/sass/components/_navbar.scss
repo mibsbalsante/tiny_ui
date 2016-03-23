@@ -1,0 +1,86 @@
+.navbar {
+  &-top,
+  &-left,
+  &-bottom {
+    left: 0;
+  }
+  &-top,
+  &-left,
+  &-right {
+    top: 0;
+  }
+  &-top,
+  &-bottom {
+    width: 100%;
+    min-height: 3.571em;
+    position: relative;
+  }
+  &-left,
+  &-right {
+    height: 100%;
+    min-width: 10em;
+    position: absolute;
+  }
+  &-right {
+    right: 0;
+  }
+  &-bottom {
+    bottom: 0;
+  }
+  &-top {
+    &.fixed {
+      & + * {
+        margin-top: 3.571em;
+      }
+    }
+  }
+}
+
+[class*="navbar-"] {
+  &.fixed {
+    position: fixed;
+    z-index: 99999;
+  }
+
+  &.row,
+  .row {
+    [class*="col-"] {
+      padding: .5rem;
+    }
+  }
+}
+
+@each $device, $width in $responsive-grid {
+  $percent: $container/100;
+  @if ($width > $tablet-min) {
+    @media (min-width: $width) {
+      .container {
+        .navbar-top,
+        .navbar-bottom {
+          width: #{$width - ($width*$percent)};
+        }
+      }
+    }
+  }
+}
+
+.container.fluid {
+  .navbar-top,
+  .navbar-bottom {
+    width: 100%;
+  }
+}
+
+.grid {
+  [class*="navbar-"] {
+    width: 100%;
+  }
+  .navbar-top,
+  .navbar-bottom {
+    left: unset;
+  }
+  .navbar-right,
+  .navbar-left {
+    top: unset;
+  }
+}

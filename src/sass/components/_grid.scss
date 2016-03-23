@@ -1,16 +1,21 @@
-@mixin grid($class, $property) {
+@mixin grid($class, $property, $all) {
+
+  @each $device-min, $width-min in $responsive-grid {
+    @each $device, $width in $responsive-grid {
+      @if ($width > $mobile-min) and ($width-min < $large-pc-min) {
+        @media (min-width: $width-min) and (max-width: #{$width - 1}) {
+
+        }
+      }
+    }
+  }
+
   @for $i from 1 through $grid-columns {
     $percent: percentage($i/$grid-columns);
-    @if ($percent>100%) {
-      $percent: 100%;
-    }
     .#{$class}-#{$i} {
       #{$property}: $percent;
     }
   }
-}
-
-@mixin grid-small($class, $property) {
   @media (min-width: #{$tablet-min}) and (max-width: #{$pc-min - 1}) {
     @for $i from 1 through $grid-columns {
       $percent: percentage($i/($grid-columns/2));
@@ -21,9 +26,6 @@
       }
     }
   }
-}
-
-@mixin grid-mini($class, $property, $all) {
   @media (max-width: #{$tablet-min - 1}) {
     @for $i from 1 through $grid-columns {
       .#{$class}-#{$i} {
@@ -38,27 +40,21 @@
   }
 }
 
-// grid variables
-$column: col;
-$grid-columns: 12;
-$column-left-margin: to-right;
-
-$mobile-min: 320px;
-$tablet-min: 768px;
-$pc-min: 992px;
-
 .grid {
   top: 0;
+  padding: 1em 0;
 
   & > .row > [class*="#{$column}-"] {
-    padding: 1em;
+    padding: 0 1em;
   }
 }
 
 .row {
   & {
-    margin: 1em 0 0;
+    margin: 0 0 1em;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
   }
   &:after {
     content: '';
@@ -66,19 +62,11 @@ $pc-min: 992px;
     clear: both;
   }
 
-  &:first-child {
-    margin-top: 0;
-  }
-
   & > [class*="#{$column}-"] {
-    float: left;
   }
 }
 .row > {
-  @include grid($column, width);
-  @include grid-small($column, width);
-  @include grid-mini($column, width, true);
+  @include grid($column, width, true);
 
-  @include grid($column-left-margin, margin-left);
-  @include grid-mini($column-left-margin, margin-left, false);
+  @include grid($column-left-margin, margin-left, false);
 }
