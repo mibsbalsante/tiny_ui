@@ -1,0 +1,53 @@
+.card {
+  color: $dark;
+  background: $lighter;
+  margin: .4em 0;
+  padding-bottom: 1em;
+  box-shadow: 0 2px 2px 0 transparentize($dark, .8);
+
+  .image,
+  .top {
+    display: flex;
+    opacity: .9;
+    min-height: 15em;
+  }
+
+  .header,
+  .sub-header,
+  .description,
+  .action {
+    padding: 1em 1rem 0;
+    display: inherit;
+  }
+
+  .header {
+    font-size: 1.5em;
+
+    .sub-header {
+      padding: .2em 0;
+    }
+  }
+
+  .sub-header {
+    color: $darkgrey;
+    font-size: .8em;
+  }
+
+  &.beauty {
+    border-radius: .4em;
+
+    .image,
+    .top {
+      border-radius: .4em .4em 0 0;
+    }
+  }
+
+  &[class*="bg-"] {
+    .header {
+      color: $lighter;
+    }
+    .sub-header {
+      color: $light;
+    }
+  }
+}

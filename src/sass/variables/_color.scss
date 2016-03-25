@@ -1,3 +1,20 @@
+// functions
+@function default-color($color) {
+  @return lighten($color, 5%);
+}
+@function disabled($color) {
+  @return lighten($color, 10%);
+}
+@function enabled($color) {
+  @return darken($color, 5%);
+}
+@function hover($color) {
+  @return $color;
+}
+@function darker-hover($color) {
+  @return darken($color, 10%);
+}
+
 // color variables - individual use
 $white: #FFF;
 $black: #323232;

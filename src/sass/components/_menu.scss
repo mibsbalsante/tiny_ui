@@ -1,33 +1,81 @@
 .menu {
   padding: .5em;
+  background: $white;
+  color: $darkgrey;
+  min-height: $min-height;
 
   li,
   .item {
     display: inherit;
-    padding: .4em 1em;
     align-self: stretch;
     align-items: center;
     justify-content: center;
     transition: all .3s ease-out;
 
-    &:not(.right):not(.no) {
-      background: rgba(0,0,0,0.1);
+    button,
+    .button {
+      margin: 0;
+    }
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        cursor: pointer;
+    &.logo {
+      font-size: 18px;
+    }
+
+    &.no {
+      padding: .4em 1em;
+    }
+
+    &:not(.right) {
+      a {
+        display: inherit;
+        align-items: center;
+        padding: .4em 1em;
+        height: 100%;
+      }
+
+      &:not(.no) {
+        background: rgba(0,0,0,0.1);
+
+        &.active {
+          background: rgba(255, 255, 255, 0.1);
+          font-weight: 500;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          cursor: pointer;
+        }
       }
     }
   }
 
   .right {
     margin: 0 0 0 auto;
-    padding: 0;
   }
 
   .menu {
     padding: 0;
   }
+
+  &.pointing {
+    li,
+    .item {
+      &:not(.right):not(.no) {
+        background: inherit;
+
+        &.active {
+          box-shadow: 0 -.2em 0 0 $lighter inset;
+          background: inherit;
+        }
+
+        &:hover {
+          background: inherit;
+          box-shadow: 0 -.2em 0 0 transparentize($darker, .2) inset;
+        }
+      }
+    }
+  }
+
 }
 
 [class*="-top"],
@@ -41,8 +89,32 @@
 .vertical.menu,
 [class*="-left"] > .menu,
 [class*="-right"] > .menu {
+  &.pointing {
+    li,
+    .item {
+      &:not(.right):not(.no) {
+        &.active {
+          box-shadow: .2em 0 0 0 $lighter inset;
+        }
+
+        &:hover {
+          box-shadow: .2em 0 0 0 transparentize($darker, .2) inset;
+        }
+      }
+    }
+  }
   li:not(.right),
   .item:not(.right) {
-    padding: 1em .4em;
+    a {
+      padding: 1em;
+    }
+  }
+}
+
+[class*="bg-"],
+.right {
+   > .menu {
+    background: inherit;
+    color: inherit;
   }
 }

@@ -1,11 +1,35 @@
 @mixin hover($class, $color: $lighter) {
   &.#{$class}:hover {
-    color: darken($color, 10%);
+    color: darker-hover($color);
   }
+
+  &.#{$class}.simple {
+    &:hover {
+      border-color: darker-hover($color);
+    }
+  }
+
+  &.#{$class}.inverted {
+    &:hover {
+      border-color: hover($color);
+    }
+
+    &.simple {
+      &:hover {
+        @if (lightness($color) < 20%) {
+          color: $lighter;
+        }
+        @else {
+          color: hover($color);
+        }
+      }
+    }
+  }
+
 
   &.bg-#{$class} {
     &:hover {
-      background: $color;
+      background: hover($color);
 
       @if (lightness($color) < 20%) {
         color: $white;
@@ -19,8 +43,8 @@
       &:hover {
         @if (lightness($color) < 20%) {
           background: $white;
-          color: $color;
-          border-color: $color;
+          color: hover($color);
+          border-color: hover($color);
         }
       }
     }
@@ -32,31 +56,8 @@
           border-color: $white;
         }
         @else {
-          color: lighten($color, 5%);
-          border-color: lighten($color, 5%);
-        }
-      }
-    }
-  }
-
-  &.#{$class}.simple {
-    &:hover {
-      border-color: darken($color, 10%);
-    }
-  }
-
-  &.#{$class}.inverted {
-    &:hover {
-      border-color: $color;
-    }
-
-    &.simple {
-      &:hover {
-        @if (lightness($color) < 20%) {
-          color: $lighter;
-        }
-        @else {
-          color: $color;
+          color: default-color($color);
+          border-color: default-color($color);
         }
       }
     }
@@ -92,8 +93,11 @@ button,
     }
   }
 
-  &[class*="bg-"].inverted.simple {
+  &[class*="bg-"].simple {
     &:hover {
+      background: $lighter;
+    }
+    &.inverted:hover {
       background: $dark;
     }
   }

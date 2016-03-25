@@ -137,7 +137,7 @@ a {
 }
 
 .margin {
-  & {
+  &-all {
     margin: 1em;
   }
   &-height {
@@ -152,7 +152,7 @@ a {
 }
 
 .padding {
-  & {
+  &-all {
     padding: 1em;
   }
   &-height {
@@ -164,6 +164,10 @@ a {
   &-none {
     padding: 0;
   }
+}
+
+.border-none {
+  border: 0 none;
 }
 
 [class*="s"] {

@@ -51,6 +51,12 @@
       padding: 1em;
     }
   }
+
+  &.main {
+    min-height: 30em;
+    font-size: 18px;
+    padding: 2em;
+  }
 }
 
 .box {
