@@ -1,119 +1,148 @@
-.menu {
-  padding: .5em;
-  background: $white;
-  color: $darkgrey;
-  min-height: $min-height;
+[class*="menu"] {
+  & {
+    padding: .5em;
+    min-height: $min-height;
 
-  li,
-  .item {
-    display: inherit;
-    align-self: stretch;
-    align-items: center;
-    justify-content: center;
-    transition: all .3s ease-out;
-
-    button,
-    .button {
-      margin: 0;
+    &.beauty {
+      border-radius: .4em;
     }
 
-    &.logo {
-      font-size: 18px;
+    &:not([class*="bg"]) {
+      color: $darkgrey;
+      background: $white;
     }
 
-    &.no {
-      padding: .4em 1em;
+    &:not(.vertical) {
+      display: flex;
+      &.beauty {
+        > * {
+          &:first-child {
+            border-radius: .4em 0 0 .4em;
+          }
+          &:last-child {
+            border-radius: 0 .4em .4em 0;
+          }
+        }
+      }
     }
 
-    &:not(.right) {
-      a {
-        display: inherit;
-        align-items: center;
-        padding: .4em 1em;
-        height: 100%;
+    &.padding-none {
+      button,
+      .button {
+        margin: .4em 1em;
+      }
+    }
+
+    &.vertical {
+      > p,
+      a,
+      .item,
+      .no {
+        padding: 1em;
       }
 
-      &:not(.no) {
-        background: rgba(0,0,0,0.1);
-
-        &.active {
-          background: rgba(255, 255, 255, 0.1);
-          font-weight: 500;
-        }
-
-        &:hover {
-          background: rgba(255, 255, 255, 0.1);
-          cursor: pointer;
+      &.beauty {
+        > * {
+          &:first-child {
+            border-radius: .4em .4em 0 0;
+          }
+          &:last-child {
+            border-radius: 0 0 .4em .4em;
+          }
         }
       }
     }
   }
 
-  .right {
-    margin: 0 0 0 auto;
+  > p,
+  a,
+  li,
+  .item,
+  .menu,
+  .no {
+    display: inherit;
+  }
+
+  > p,
+  a,
+  .no {
+    padding: .4em 1em;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a,
+  .item {
+    transition: all .3s ease-out;
+
+    &:not(.no) {
+      background: transparentize($black, .9);;
+
+      &.active {
+        background: transparentize($white, .9);;
+        font-weight: 500;
+      }
+
+      &:hover {
+        background: transparentize($white, .9);;
+        cursor: pointer;
+      }
+    }
   }
 
   .menu {
     padding: 0;
   }
 
-  &.pointing {
-    li,
+  > .logo {
+    font-size: 18px;
+  }
+
+  > .right {
+    margin: 0 0 0 auto;
+
+    &.menu {
+      background: inherit;
+      color: inherit;
+    }
+  }
+}
+
+
+.menu {
+  &-pointing {
+    a,
     .item {
-      &:not(.right):not(.no) {
+      &:not(.no) {
         background: inherit;
 
-        &.active {
+        &.active,
+        &:hover {
           box-shadow: 0 -.2em 0 0 $lighter inset;
           background: inherit;
         }
+      }
+    }
+    &.vertical {
+      a,
+      .item {
+        &:not(.no) {
 
-        &:hover {
-          background: inherit;
-          box-shadow: 0 -.2em 0 0 transparentize($darker, .2) inset;
+          &.active {
+            box-shadow: .2em 0 0 0 $lighter inset;
+          }
+
+          &:hover {
+            box-shadow: .2em 0 0 0 transparentize($darker, .2) inset;
+          }
         }
       }
     }
   }
-
 }
 
-[class*="-top"],
-[class*="-bottom"] {
-  .menu {
-    display: flex;
-    align-items: center;
-  }
-}
-
-.vertical.menu,
-[class*="-left"] > .menu,
-[class*="-right"] > .menu {
-  &.pointing {
-    li,
-    .item {
-      &:not(.right):not(.no) {
-        &.active {
-          box-shadow: .2em 0 0 0 $lighter inset;
-        }
-
-        &:hover {
-          box-shadow: .2em 0 0 0 transparentize($darker, .2) inset;
-        }
-      }
-    }
-  }
-  li:not(.right),
-  .item:not(.right) {
-    a {
-      padding: 1em;
-    }
-  }
-}
-
-[class*="bg-"],
-.right {
-   > .menu {
+[class*="navbar"][class*="bg"] {
+  [class*="menu"] {
     background: inherit;
     color: inherit;
   }

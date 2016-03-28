@@ -15,6 +15,7 @@
       #{$property}: $percent;
     }
   }
+  
   @media (min-width: #{$tablet-min}) and (max-width: #{$pc-min - 1}) {
     @for $i from 1 through $grid-columns {
       $percent: percentage($i/($grid-columns/2));
@@ -31,6 +32,7 @@
       }
     }
   }
+
   @media (max-width: #{$tablet-min - 1}) {
     @for $i from 1 through $grid-columns {
       .#{$class}-#{$i} {
@@ -55,7 +57,7 @@
   top: 0;
   padding: 1em 0;
 
-  & > .row > [class*="#{$column}-"] {
+  & > .row > [class*="#{$column}"] {
     padding: 0 1em;
   }
 }
@@ -73,7 +75,7 @@
     clear: both;
   }
 
-  & > [class*="#{$column}-"] {
+  & > [class*="#{$column}"] {
     margin-bottom: 1em;
   }
 }

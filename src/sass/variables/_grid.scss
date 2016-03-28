@@ -9,14 +9,16 @@ $tablet-min: 768px;
 $pc-min: 992px;
 $large-pc-min: 1200px;
 
-$responsive-grid: (
+$large-pc-def: 1366px;
+
+$responsive-gridd: (
   large: $large-pc-min,
   default: $pc-min,
   small: $tablet-min,
   tiny: $mobile-min
 );
 
-$responsive-griddd: (
+$responsive-grid: (
   tiny: $mobile-min,
   small: $tablet-min,
   default: $pc-min,

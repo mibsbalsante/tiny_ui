@@ -27,11 +27,11 @@
   &-bottom {
     bottom: 0;
   }
-  &-top {
-    &.fixed {
-      & + * {
-        margin-top: $min-height;
-      }
+
+  &-top.fixed {
+    & + *,
+    & + * + * {
+      // margin-top: $min-height;
     }
   }
 }

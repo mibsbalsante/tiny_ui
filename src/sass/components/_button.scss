@@ -78,6 +78,7 @@ button,
   font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
+  text-align: center;
   display: inline-flex;
   transition: all .2s ease-out;
 
@@ -85,7 +86,7 @@ button,
     color: $darker;
   }
 
-  &[class*="bg-"]:hover {
+  &[class*="bg"]:hover {
     color: $white;
 
     &.classic {
@@ -93,7 +94,7 @@ button,
     }
   }
 
-  &[class*="bg-"].simple {
+  &[class*="bg"].simple {
     &:hover {
       background: $lighter;
     }
@@ -133,8 +134,35 @@ button,
     margin: .2em;
     display: inline-flex;
 
-    &[class*="bg-"] {
+    &[class*="bg"] {
       color: $lighter;
+    }
+  }
+
+  &.tiny {
+    > button,
+    > .button {
+      padding: .2em .6em;
+    }
+  }
+  &.small {
+    > button,
+    > .button {
+      padding: .4em .8em;
+    }
+  }
+  &.large {
+    > button,
+    > .button {
+      padding: .8em 1.2em;
+      font-size: 1.2rem;
+    }
+  }
+  &.huge {
+    > button,
+    > .button {
+      padding: 1em 1.4em;
+      font-size: 1.4rem;
     }
   }
 

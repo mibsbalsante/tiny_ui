@@ -1,0 +1,23 @@
+form,
+.form {
+  .row {
+    display: flex;
+    &.inline {
+      display: inline-flex;
+      width: auto;
+    }
+  }
+}
+
+input,
+textarea {
+  border-radius: 0;
+  border: 1px solid $grey;
+  width: 100%;
+  padding: .6em 1em;
+
+  &:focus {
+    border-color: $blue;
+    box-shadow: 0px 0px 1px 0px disabled($blue);
+  }
+}

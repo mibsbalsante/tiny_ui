@@ -13,6 +13,10 @@
     }
   }
 
+  @media(min-width: $large-pc-def) {
+    width: $large-pc-min;
+  }
+  
   &.fluid {
     max-width: 100%;
   }

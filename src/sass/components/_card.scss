@@ -8,13 +8,12 @@
   .image,
   .top {
     display: flex;
-    opacity: .9;
     min-height: 15em;
   }
 
   .header,
   .sub-header,
-  .description,
+  .content,
   .action {
     padding: 1em 1rem 0;
     display: inherit;
@@ -42,7 +41,7 @@
     }
   }
 
-  &[class*="bg-"] {
+  &[class*="bg"] {
     .header {
       color: $lighter;
     }
