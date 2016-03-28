@@ -12,7 +12,7 @@
   &-top,
   &-bottom {
     width: 100%;
-    min-height: 3.571em;
+    min-height: $min-height;
     position: relative;
   }
   &-left,
@@ -27,11 +27,11 @@
   &-bottom {
     bottom: 0;
   }
-  &-top {
-    &.fixed {
-      & + * {
-        margin-top: 3.571em;
-      }
+
+  &-top.fixed {
+    & + *,
+    & + * + * {
+      // margin-top: $min-height;
     }
   }
 }
@@ -72,9 +72,6 @@
 }
 
 .grid {
-  [class*="navbar-"] {
-    width: 100%;
-  }
   .navbar-top,
   .navbar-bottom {
     left: unset;

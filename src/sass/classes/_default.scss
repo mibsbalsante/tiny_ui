@@ -35,7 +35,7 @@ h6,
   display: flex;
   color: $dark;
 }
-[class*="bg-"] {
+[class*="bg"] {
   h1,
   h2,
   h3,
@@ -87,12 +87,19 @@ a {
 
 .align {
   &-left {
+    justify-content: flex-start;
     text-align: left;
   }
   &-right {
+    justify-content: flex-end;
     text-align: right;
   }
+  &-center {
+    justify-content: center;
+    text-align: center;
+  }
   &-justify {
+    justify-content: space-between;
     text-align: justify;
   }
 }
@@ -132,12 +139,15 @@ a {
   border-radius: 4em;
 }
 
+.vertical {
+  width: $min-width;
+}
 .fluid {
   width: 100%;
 }
 
 .margin {
-  & {
+  &-all {
     margin: 1em;
   }
   &-height {
@@ -152,7 +162,7 @@ a {
 }
 
 .padding {
-  & {
+  &-all {
     padding: 1em;
   }
   &-height {
@@ -164,6 +174,10 @@ a {
   &-none {
     padding: 0;
   }
+}
+
+.border-none {
+  border: 0 none;
 }
 
 [class*="s"] {

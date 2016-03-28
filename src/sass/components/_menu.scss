@@ -1,48 +1,149 @@
-.menu {
-  padding: .5em;
+[class*="menu"] {
+  & {
+    padding: .5em;
+    min-height: $min-height;
 
+    &.beauty {
+      border-radius: .4em;
+    }
+
+    &:not([class*="bg"]) {
+      color: $darkgrey;
+      background: $white;
+    }
+
+    &:not(.vertical) {
+      display: flex;
+      &.beauty {
+        > * {
+          &:first-child {
+            border-radius: .4em 0 0 .4em;
+          }
+          &:last-child {
+            border-radius: 0 .4em .4em 0;
+          }
+        }
+      }
+    }
+
+    &.padding-none {
+      button,
+      .button {
+        margin: .4em 1em;
+      }
+    }
+
+    &.vertical {
+      > p,
+      a,
+      .item,
+      .no {
+        padding: 1em;
+      }
+
+      &.beauty {
+        > * {
+          &:first-child {
+            border-radius: .4em .4em 0 0;
+          }
+          &:last-child {
+            border-radius: 0 0 .4em .4em;
+          }
+        }
+      }
+    }
+  }
+
+  > p,
+  a,
   li,
-  .item {
+  .item,
+  .menu,
+  .no {
     display: inherit;
+  }
+
+  > p,
+  a,
+  .no {
     padding: .4em 1em;
-    align-self: stretch;
     align-items: center;
     justify-content: center;
+  }
+
+  a,
+  .item {
     transition: all .3s ease-out;
 
-    &:not(.right):not(.no) {
-      background: rgba(0,0,0,0.1);
+    &:not(.no) {
+      background: transparentize($black, .9);;
+
+      &.active {
+        background: transparentize($white, .9);;
+        font-weight: 500;
+      }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: transparentize($white, .9);;
         cursor: pointer;
       }
     }
   }
 
-  .right {
+  .menu {
+    padding: 0;
+  }
+
+  > .logo {
+    font-size: 18px;
+  }
+
+  > .right {
     margin: 0 0 0 auto;
-    padding: 0;
-  }
 
-  .menu {
-    padding: 0;
-  }
-}
-
-[class*="-top"],
-[class*="-bottom"] {
-  .menu {
-    display: flex;
-    align-items: center;
+    &.menu {
+      background: inherit;
+      color: inherit;
+    }
   }
 }
 
-.vertical.menu,
-[class*="-left"] > .menu,
-[class*="-right"] > .menu {
-  li:not(.right),
-  .item:not(.right) {
-    padding: 1em .4em;
+
+.menu {
+  &-pointing {
+    a,
+    .item {
+      &:not(.no) {
+        background: inherit;
+
+        &.active,
+        &:hover {
+          box-shadow: 0 -.2em 0 0 $lighter inset;
+          background: inherit;
+        }
+      }
+    }
+    &.vertical {
+      a,
+      .item {
+        &:not(.no) {
+
+          &.active {
+            box-shadow: .2em 0 0 0 $lighter inset;
+          }
+
+          &:hover {
+            box-shadow: .2em 0 0 0 transparentize($darker, .2) inset;
+          }
+        }
+      }
+    }
+  }
+}
+
+[class*="navbar"][class*="bg"] {
+  [class*="menu"] {
+    background: inherit;
+    color: inherit;
   }
 }

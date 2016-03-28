@@ -1,5 +1,7 @@
 .container {
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 
   $percent: $container/100;
 
@@ -11,6 +13,10 @@
     }
   }
 
+  @media(min-width: $large-pc-def) {
+    width: $large-pc-min;
+  }
+  
   &.fluid {
     max-width: 100%;
   }

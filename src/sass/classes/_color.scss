@@ -1,8 +1,8 @@
-/* mixins */
+// mixins
 @mixin bg($class, $color: $lighter) {
   .bg-#{$class} {
-    background: lighten($color, 5%);
-    border-color: $color;
+    background: default-color($color);
+    border-color: hover($color);
 
     @if (lightness($color) > 70%) {
       color: $darkgrey;
@@ -14,27 +14,31 @@
         border-color: transparentize($lighter, .12);
       }
       @else {
-        color: lighten($color, 5%);
-        border-color: lighten($color, 5%);
+        color: default-color($color);
+        border-color: default-color($color);
       }
     }
 
     &.classic {
-      box-shadow: 0px -5px 10px 0px darken($color, 5%) inset, 0px 0px 2px 0px darken($color, 5%) inset, 0px 0px 1px 0px darken($color, 5%);
+      box-shadow: 0px -5px 10px 0px enabled($color) inset, 0px 0px 2px 0px enabled($color) inset, 0px 0px 1px 0px enabled($color);
     }
 
     &.modern {
       box-shadow: 0px 4px 0 -2px $color;
     }
-  }
-}
 
-@mixin color($color: $lighter) {
+    &.enabled {
+      background: enabled($color);
+    }
+    &.disabled {
+      background: disabled($color);
+    }
+  }
 }
 
 
 // bg definition
-[class*="bg-"] {
+[class*="bg"] {
   color: transparentize($lighter, .12);
 
   &.simple {
