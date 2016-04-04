@@ -19,12 +19,8 @@
       }
     }
 
-    &.classic {
-      box-shadow: 0px -5px 10px 0px enabled($color) inset, 0px 0px 2px 0px enabled($color) inset, 0px 0px 1px 0px enabled($color);
-    }
-
-    &.modern {
-      box-shadow: 0px 4px 0 -2px $color;
+    &.raised-out {
+      box-shadow: 0 .4em 0 -.2em $color;
     }
 
     &.enabled {
@@ -46,6 +42,10 @@
     border-color:  lighten($lighter, 5%);
   }
 
+  &.raised {
+    box-shadow: 0 -.2em 0 0 transparentize($real-black, .8) inset;
+  }
+
   &.inverted {
     background: $dark;
 
@@ -54,8 +54,8 @@
       border-color: transparentize($lighter, .12);
     }
 
-    &.classic {
-      box-shadow: 0px -5px 10px 0px $darker inset, 0px 0px 2px 0px $darker inset;
+    &.raised {
+      box-shadow: 0 -5px 10px 0 $darker inset, 0 0 2px 0 $darker inset;
     }
   }
 }

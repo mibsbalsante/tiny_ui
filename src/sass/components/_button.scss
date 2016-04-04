@@ -11,7 +11,6 @@
 
   &.#{$class}.inverted {
     &:hover {
-      border-color: hover($color);
     }
 
     &.simple {
@@ -44,20 +43,21 @@
         @if (lightness($color) < 20%) {
           background: $white;
           color: hover($color);
-          border-color: hover($color);
         }
       }
     }
 
     &.simple {
       &:hover {
-        @if (lightness($color) < 20%) {
-          color: $white;
-          border-color: $white;
-        }
-        @else {
-          color: default-color($color);
-          border-color: default-color($color);
+        color: default-color($color);
+        border-color: default-color($color);
+      }
+      &.inverted {
+        &:hover {
+          @if (lightness($color) < 20%) {
+            color: $white;
+            border-color: $white;
+          }
         }
       }
     }
@@ -70,8 +70,8 @@ button,
 .button {
   padding: .6em 1em;
   margin: .2em;
+  border: 0 none;
   border-radius: 0;
-  border: 1px solid transparent;
   cursor: pointer;
   color: inherit;
   background-color: transparent;
@@ -88,10 +88,6 @@ button,
 
   &[class*="bg"]:hover {
     color: $white;
-
-    &.classic {
-      box-shadow: 0px 0px 1px 0px transparentize($darker, .5);
-    }
   }
 
   &[class*="bg"].simple {
@@ -124,8 +120,8 @@ button,
   }
 
   &.simple {
+    border: 1px solid $darkgrey;
     color: $darkgrey;
-    border-color: $darkgrey;
   }
 }
 

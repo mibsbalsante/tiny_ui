@@ -1,0 +1,21 @@
+body.modal-active {
+  overflow: hidden;
+}
+
+.modal {
+  display: none;
+
+  &.active {
+    position: fixed;
+    display: block;
+    overflow-y: scroll;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
+    background: RGBA(0, 0, 0, 0.4);
+    z-index: 9999;
+  }
+}

@@ -1,11 +1,10 @@
 @mixin bg-box($class, $color) {
   .#{$class}.box,
-  .#{$class}.box.human,
   .#{$class}.boxes > .box:first-child {
       border-top-color: $color;
   }
   .bg-#{$class} {
-    &.modern {
+    &.raised-out {
       &.box,
       &.boxes {
         box-shadow: 0 8px 0 -4px lighten($color, 10%);
@@ -13,7 +12,7 @@
     }
   }
   .#{$class} {
-    &.modern {
+    &.raised-out {
       &.box,
       &.boxes {
         border-color: $color;
@@ -34,7 +33,7 @@
 .box {
   padding: 1em;
 
-  &.human {
+  &.panel {
     padding: 0;
     border-top: 5px solid darken($lighter, 10%);
 
@@ -86,7 +85,7 @@
     border-radius: .4em;
   }
 
-  &.modern {
+  &.raised-out {
     box-shadow: 0 8px 0 -4px darken($lighter, 10%);
   }
 

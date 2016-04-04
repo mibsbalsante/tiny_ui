@@ -76,7 +76,7 @@
     transition: all .3s ease-out;
 
     &:not(.no) {
-      background: transparentize($black, .9);;
+      background: transparentize($black, .9);
 
       &.active {
         background: transparentize($white, .9);;
